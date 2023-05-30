@@ -17,9 +17,9 @@ const Index = () => {
 			return;
 		}
 		window.localStorage.setItem("email-id", email.trim());
+		window.localStorage.setItem("user-authenticated", true);
 		navigate("/dashboard");
 	};
-	console.log({ error, email });
 	return (
 		<Stack rowGap={2}>
 			<StyledFlexContainer flexStart>Email Address</StyledFlexContainer>
