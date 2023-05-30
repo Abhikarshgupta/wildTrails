@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { postAPIRequest } from "../../../services";
+import { getAPIRequest } from "../../../services";
 
 const useGetRegions = () => {
 	const [regions, setRegions] = useState([]);
@@ -8,15 +8,11 @@ const useGetRegions = () => {
 	useEffect(() => {
 		const getAllRegions = async () => {
 			try {
-				const response = await postAPIRequest(
-					"http://52.77.84.127:3306/africapackages/v5/GetRegionsforHP",
-					{
-						emailid: "manju.paybills@gmail.com",
-						apikey: "sitcdfge6789gagan",
-					}
+				const response = await getAPIRequest(
+					"https://www.universal-tutorial.com/api/countries/"
 				);
-				console.log({ response });
-				setRegions([]);
+				if (response && response.length)
+					setRegions(response.map((country) => country.country_name));
 			} catch (error) {
 				setError(error);
 				setRegions(["India", "Africa", "Europe", "US"]);

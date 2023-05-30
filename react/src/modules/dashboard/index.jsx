@@ -21,7 +21,6 @@ const NIGHT_OPTIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const Index = () => {
 	const { regions, error: errorRegions } = useGetRegions();
-	const { cities, error: errorCities } = useGetCities();
 
 	const [currentRegion, setCurrentRegion] = useState("");
 	const [currentRegionInputValue, setCurrentRegionInputValue] = useState("");
@@ -31,6 +30,7 @@ const Index = () => {
 	const [nights, setNights] = useState(1);
 	const [showDetailsPopup, setShowDetailsPopup] = useState(false);
 
+	const { cities, error: errorCities } = useGetCities(currentRegion);
 	const handleLogout = () => {
 		window.localStorage.clear();
 		window.location.reload();
@@ -72,11 +72,11 @@ const Index = () => {
 					</StyledFlexContainer>
 					<StyledFlexContainer flexSpaceBetween>
 						<StyledFlexContainer column>
-							{errorRegions.length && (
+							{errorRegions.length ? (
 								<StyledFlexContainer style={{ color: "red" }}>
 									Failed To Fetch Regions
 								</StyledFlexContainer>
-							)}
+							) : null}
 							{!errorRegions.length && (
 								<StyledFlexContainer style={{ color: "#fff" }}>
 									Select Region
@@ -104,11 +104,11 @@ const Index = () => {
 							/>
 						</StyledFlexContainer>
 						<StyledFlexContainer column>
-							{errorCities.length && (
+							{errorCities.length ? (
 								<StyledFlexContainer style={{ color: "red" }}>
 									Failed To Fetch Cities
 								</StyledFlexContainer>
-							)}
+							) : null}
 							{!errorCities.length && (
 								<StyledFlexContainer style={{ color: "#fff" }}>
 									Select City

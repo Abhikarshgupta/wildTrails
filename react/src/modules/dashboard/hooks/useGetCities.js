@@ -1,30 +1,25 @@
 import { useEffect, useState } from "react";
-import { postAPIRequest } from "../../../services";
+import { getAPIRequest } from "../../../services";
 
-const useGetCities = () => {
+const useGetCities = (currentRegion) => {
 	const [cities, setCities] = useState([]);
 	const [error, setError] = useState("");
 
 	useEffect(() => {
 		const getAllCities = async () => {
 			try {
-				const response = await postAPIRequest(
-					"http://52.77.84.127:3306/africapackages/v5/GetStartCitiesforHP",
-					{
-						emailid: "manju.paybills@gmail.com",
-						apikey: "sitcdfge6789gagan",
-						region: "india",
-					}
+				const response = await getAPIRequest(
+					`https://www.universal-tutorial.com/api/states/${currentRegion}`
 				);
-				console.log({ response });
-				setCities([]);
+				if (response && response.length)
+					setCities(response.map((city) => city.state_name));
 			} catch (error) {
 				setError(error);
-				setCities(["Mumbai", "Delhi", "Chennai", "Kolkata"]);
+				setCities([]);
 			}
 		};
-		getAllCities();
-	}, []);
+		if (currentRegion) getAllCities();
+	}, [currentRegion]);
 	return { cities, error };
 };
 
