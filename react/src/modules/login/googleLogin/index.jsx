@@ -12,7 +12,6 @@ const generateNonce = () => {
 	for (var i = 0; i < 16; i++) {
 		text += possible.charAt(Math.floor(Math.random() * possible.length));
 	}
-	console.log({ text });
 	return text;
 };
 const Index = () => {
@@ -25,10 +24,6 @@ const Index = () => {
 			window.localStorage.setItem("user-authenticated", true);
 			navigate("/dashboard");
 		}
-
-		window?.google?.accounts?.id?.initialize({
-			client_id: gooogleClientID,
-		});
 	}, [navigate]);
 
 	const handleGoogleLogin = () => {
