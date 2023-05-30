@@ -3,6 +3,7 @@ import { postAPIRequest } from "../../../services";
 
 const useGetCities = () => {
 	const [cities, setCities] = useState([]);
+	const [error, setError] = useState("");
 
 	useEffect(() => {
 		const getAllCities = async () => {
@@ -18,12 +19,13 @@ const useGetCities = () => {
 				console.log({ response });
 				setCities([]);
 			} catch (error) {
-				console.log({ error });
+				setError(error);
+				setCities(["Mumbai", "Delhi", "Chennai", "Kolkata"]);
 			}
 		};
 		getAllCities();
 	}, []);
-	return { cities };
+	return { cities, error };
 };
 
 export default useGetCities;

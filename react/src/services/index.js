@@ -7,6 +7,9 @@ export const METHOD_TYPE = {
 
 const APILayerService = async (method, url, body) => {
 	const headers = new Headers();
+	headers.append("Content-Type", "application/json");
+	headers.append("Access-Control-Allow-Origin", "*");
+	headers.append("Referrer-Policy", "origin");
 	const requestOptions = {
 		method,
 		headers,
@@ -14,12 +17,13 @@ const APILayerService = async (method, url, body) => {
 	if (method !== METHOD_TYPE.GET) {
 		requestOptions.body = JSON.stringify(body);
 	}
+	console.log({ requestOptions });
 	try {
 		const response = await fetch(url, requestOptions);
 		console.log({ response });
 	} catch (error) {
 		console.log({ error });
-		return await Promise.reject(error);
+		return await Promise.reject(JSON.stringify(error));
 	}
 };
 

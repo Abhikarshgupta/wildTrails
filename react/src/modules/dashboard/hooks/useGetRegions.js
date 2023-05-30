@@ -3,6 +3,7 @@ import { postAPIRequest } from "../../../services";
 
 const useGetRegions = () => {
 	const [regions, setRegions] = useState([]);
+	const [error, setError] = useState("");
 
 	useEffect(() => {
 		const getAllRegions = async () => {
@@ -17,12 +18,13 @@ const useGetRegions = () => {
 				console.log({ response });
 				setRegions([]);
 			} catch (error) {
-				console.log({ error });
+				setError(error);
+				setRegions(["India", "Africa", "Europe", "US"]);
 			}
 		};
 		getAllRegions();
 	}, []);
-	return { regions };
+	return { regions, error };
 };
 
 export default useGetRegions;
