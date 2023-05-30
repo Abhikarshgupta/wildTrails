@@ -38,7 +38,7 @@ jobs:
           cache-dependency-path: './react/package-lock.json'
       - name: Install dependencies
         run: npm install
-        working-directory: '/home/runner/work/wildTrails/react/package.json'
+        working-directory: './wildTrails/tree/master/react'
       - name: Build
         run: npm run build
       - name: Setup Pages
