@@ -33,7 +33,7 @@ const Index = () => {
 			`response_type=id_token` +
 			`&client_id=${gooogleClientID}` +
 			`&redirect_uri=${encodeURIComponent(
-				"https://abhikarshgupta.github.io/wildTrails/login"
+				"https://abhikarshgupta.github.io/wildTrails/"
 			)}` +
 			`&scope=${encodeURIComponent("email profile")}` +
 			`&nonce=${nonce}`;
