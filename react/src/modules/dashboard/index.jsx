@@ -43,7 +43,13 @@ const Index = () => {
 	};
 
 	const validateFormData = (() => {
-		return !currentRegion.length || !currentCity.length || !checkInDate;
+		return (
+			!currentRegion ||
+			!currentRegion.length ||
+			!currentCity ||
+			!currentCity.length ||
+			!checkInDate
+		);
 	})();
 
 	return (

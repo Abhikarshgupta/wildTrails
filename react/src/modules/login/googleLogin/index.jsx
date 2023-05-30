@@ -32,7 +32,9 @@ const Index = () => {
 			`https://accounts.google.com/o/oauth2/v2/auth?` +
 			`response_type=id_token` +
 			`&client_id=${gooogleClientID}` +
-			`&redirect_uri=${encodeURIComponent("https://localhost:3000/login")}` +
+			`&redirect_uri=${encodeURIComponent(
+				"https://abhikarshgupta.github.io/wildTrails/login"
+			)}` +
 			`&scope=${encodeURIComponent("email profile")}` +
 			`&nonce=${nonce}`;
 		window.location.href = authURL;
