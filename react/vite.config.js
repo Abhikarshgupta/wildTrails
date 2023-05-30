@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: "/react/dist/",
+	base: "./",
 	plugins: [react(), basicSsl()],
 	resolve: {
 		alias: {
