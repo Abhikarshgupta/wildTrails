@@ -41,6 +41,11 @@ const Index = () => {
 	const handleSearchPackages = () => {
 		toggleDialogOpen();
 	};
+
+	const validateFormData = (() => {
+		return !currentRegion.length || !currentCity.length || !checkInDate;
+	})();
+
 	return (
 		<StyledDashboardRoot rowGap={20}>
 			<StyledFlexContainer flexEnd fullWidth style={{ padding: "1rem" }}>
@@ -164,7 +169,8 @@ const Index = () => {
 						<Button
 							variant='contained'
 							color='warning'
-							onClick={handleSearchPackages}>
+							onClick={handleSearchPackages}
+							disabled={validateFormData}>
 							Search Packages
 						</Button>
 					</StyledFlexContainer>
