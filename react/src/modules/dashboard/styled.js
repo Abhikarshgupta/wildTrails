@@ -6,12 +6,13 @@ export const StyledDashboardRoot = styled(Stack)`
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
+	background-position: center;
 	width: 100%;
-	height: 100%;
+	height: 80%;
 `;
 
 export const StyledDashboardFormContainer = styled(Stack)`
-	width: 50rem;
-	height: 30rem;
+	width: 61rem;
+	height: 20rem;
 	background: rgba(0, 0, 0, 0.5);
 `;
