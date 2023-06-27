@@ -52,6 +52,9 @@ border: 1px solid #fff;
 1. Universal Styles
 ------------------------------------------------
 ----------------------------------------------*/
+html {
+	scroll-behavior: smooth;
+}
 body {
 	height: 100vh;
 }

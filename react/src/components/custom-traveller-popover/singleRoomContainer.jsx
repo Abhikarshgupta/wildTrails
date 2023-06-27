@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { Stack } from "@mui/material";
-import React from "react";
 import { StyledFlexContainer } from "../../styles/globalStyles";
 import IncrementDecrement from "./incrementDecrement";
 

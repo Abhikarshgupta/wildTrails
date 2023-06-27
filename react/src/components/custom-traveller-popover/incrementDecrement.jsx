@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { Button, ButtonGroup } from "@mui/material";
-import React from "react";
 import { StyledFlexContainer } from "../../styles/globalStyles";
 
 const IncrementDecrement = ({ count, handleIncrement, handleDecrement }) => {

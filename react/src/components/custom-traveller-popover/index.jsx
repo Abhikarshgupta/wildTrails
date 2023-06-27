@@ -1,5 +1,7 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable react/prop-types */
 import { Popover, Stack } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 import { StyledFlexContainer } from "../../styles/globalStyles";
 import SingleRoomContainer from "./singleRoomContainer";
 
@@ -105,6 +107,7 @@ const CustomTravellerPopOver = ({ travellerDetails, setTravellerDetails }) => {
 					{Object.entries(travellerDetails).map(
 						([roomId, roomDetails], index) => (
 							<SingleRoomContainer
+								key={roomId}
 								roomNumber={index}
 								handleUpdateRoomDetails={handleTravellerDetails}
 								currentRoomDetails={roomDetails}
