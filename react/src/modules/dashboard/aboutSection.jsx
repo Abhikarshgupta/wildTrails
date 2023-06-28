@@ -1,4 +1,5 @@
 import { Button, Stack } from "@mui/material";
+import { memo } from "react";
 import { StarIconSVG } from "../../assets";
 import { StyledFlexContainer } from "../../styles/globalStyles";
 
@@ -237,4 +238,5 @@ const AboutSection = () => {
 	);
 };
 
-export default AboutSection;
+const MemoizedAbout = memo(AboutSection);
+export default MemoizedAbout;

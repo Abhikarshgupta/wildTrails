@@ -36,15 +36,11 @@ const Index = () => {
 	const [checkInDate, setCheckInDate] = useState(null);
 	const [nights, setNights] = useState(1);
 	const [showDetailsPopup, setShowDetailsPopup] = useState(false);
+
 	const { cities, error: errorCities } = useGetCities(currentRegion);
 	const [travellerDetails, setTravellerDetails] = useState({
 		0: roomData,
 	});
-
-	const handleLogout = () => {
-		window.localStorage.clear();
-		window.location.reload();
-	};
 
 	const handleChangeNight = (event) => setNights(event.target.value);
 	const toggleDialogOpen = () => setShowDetailsPopup((prev) => !prev);
@@ -66,15 +62,10 @@ const Index = () => {
 	return (
 		<>
 			<StyledDashboardRoot rowGap={10}>
-				<StyledFlexContainer flexEnd fullWidth style={{ padding: "1rem" }}>
-					<Button
-						variant='contained'
-						color='error'
-						size='small'
-						onClick={handleLogout}>
-						Logout
-					</Button>
-				</StyledFlexContainer>
+				<StyledFlexContainer
+					flexEnd
+					fullWidth
+					style={{ padding: "1rem" }}></StyledFlexContainer>
 				<StyledFlexContainer fullWidth>
 					<StyledDashboardFormContainer
 						rowGap={2}
