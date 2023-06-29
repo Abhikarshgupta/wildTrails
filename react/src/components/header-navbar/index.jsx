@@ -12,6 +12,7 @@ import { useState } from "react";
 import { StyledFlexContainer } from "../../styles/globalStyles";
 import InvoiceModal from "../invoice-modal";
 import MarkupModal from "../markup-modal";
+import { StyledLogoContainer } from "./styled";
 const wildTrailsLogo = new URL("./wildTrailsLogo.png", import.meta.url).href;
 
 const HeaderNavbar = () => {
@@ -37,11 +38,14 @@ const HeaderNavbar = () => {
 		<AppBar sx={{ backgroundColor: "#000000b3" }}>
 			<Container maxWidth='xl'>
 				<Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-					<StyledFlexContainer>
-						<a href='https://sitc.travel/' title='SafariIn3Clicks'>
-							<img src={wildTrailsLogo} alt='wildTrailsLogo' height='70rem' />
+					<StyledLogoContainer>
+						<a
+							href='https://sitc.travel/'
+							title='SafariIn3Clicks'
+							style={{ height: "100%" }}>
+							<img src={wildTrailsLogo} alt='wildTrailsLogo' height='100%' />
 						</a>
-					</StyledFlexContainer>
+					</StyledLogoContainer>
 					{isUserAuthenticated && (
 						<StyledFlexContainer gap='1rem'>
 							<Button

@@ -1,3 +1,4 @@
+import { Stack } from "@mui/material";
 import styled, { css } from "styled-components";
 
 export const StyledFlexContainer = styled.div`
@@ -57,4 +58,10 @@ export const StyledFlexContainer = styled.div`
 			pointer-events: none;
 			opacity: 0.3;
 		`}
+`;
+
+export const StyledStack = styled(Stack)`
+	@media only screen and (max-width: 768px) {
+		width: 100%;
+	}
 `;

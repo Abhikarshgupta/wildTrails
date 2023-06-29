@@ -4,10 +4,9 @@ import {
 	FormControl,
 	MenuItem,
 	Select,
-	Stack,
 	TextField,
 } from "@mui/material";
-import { StyledFlexContainer } from "../../styles/globalStyles";
+import { StyledFlexContainer, StyledStack } from "../../styles/globalStyles";
 import { StyledDashboardFormContainer, StyledDashboardRoot } from "./styled";
 import { useState } from "react";
 import useGetRegions from "./hooks/useGetRegions";
@@ -33,7 +32,7 @@ const Index = () => {
 	const [currentRegionInputValue, setCurrentRegionInputValue] = useState("");
 	const [currentCity, setCurrentCity] = useState("");
 	const [currentCityInputValue, setCurrentCityInputValue] = useState("");
-	const [checkInDate, setCheckInDate] = useState(null);
+	const [checkInDate, setCheckInDate] = useState(new Date());
 	const [nights, setNights] = useState(1);
 	const [showDetailsPopup, setShowDetailsPopup] = useState(false);
 
@@ -62,19 +61,15 @@ const Index = () => {
 	return (
 		<>
 			<StyledDashboardRoot rowGap={10}>
-				<StyledFlexContainer
-					flexEnd
-					fullWidth
-					style={{ padding: "1rem" }}></StyledFlexContainer>
-				<StyledFlexContainer fullWidth>
+				<StyledFlexContainer fullWidth style={{ marginTop: "15%" }}>
 					<StyledDashboardFormContainer
 						rowGap={2}
 						style={{ padding: "2rem 1rem" }}>
 						<StyledFlexContainer style={{ color: "#fff" }}>
 							Book your Jungle Experiences along with Safaris & Local Activities
 						</StyledFlexContainer>
-						<StyledFlexContainer flexSpaceBetween>
-							<Stack rowGap={1}>
+						<StyledFlexContainer flexSpaceBetween wrap>
+							<StyledStack rowGap={1}>
 								{errorRegions.length ? (
 									<StyledFlexContainer style={{ color: "red" }}>
 										Failed To Fetch Regions
@@ -97,7 +92,8 @@ const Index = () => {
 									id='controllable-states-demo'
 									options={regions}
 									sx={{
-										width: "20rem",
+										width: "15rem",
+										maxWidth: "100%",
 										background: "#fff",
 										borderRadius: "0.5rem",
 									}}
@@ -106,8 +102,8 @@ const Index = () => {
 										<TextField {...params} placeholder='Select Region' />
 									)}
 								/>
-							</Stack>
-							<Stack rowGap={1}>
+							</StyledStack>
+							<StyledStack rowGap={1}>
 								{errorCities.length ? (
 									<StyledFlexContainer style={{ color: "red" }}>
 										Failed To Fetch Cities
@@ -130,7 +126,8 @@ const Index = () => {
 									id='controllable-states-demo'
 									options={cities}
 									sx={{
-										width: "20rem",
+										width: "15rem",
+										maxWidth: "100%",
 										background: "#fff",
 										borderRadius: "0.5rem",
 									}}
@@ -140,10 +137,13 @@ const Index = () => {
 										<TextField {...params} placeholder='Select City' />
 									)}
 								/>
-							</Stack>
+							</StyledStack>
 						</StyledFlexContainer>
-						<StyledFlexContainer flexSpaceBetween>
-							<Stack rowGap={1}>
+						<StyledFlexContainer
+							flexStart
+							wrap
+							style={{ rowGap: "1rem", columnGap: "3.5rem" }}>
+							<StyledStack rowGap={1}>
 								<StyledFlexContainer style={{ color: "#fff" }} flexStart>
 									CheckIn
 								</StyledFlexContainer>
@@ -152,15 +152,18 @@ const Index = () => {
 										sx={{
 											background: "#fff",
 											borderRadius: "0.5rem",
+											maxWidth: "100%",
+											width: "15rem",
 										}}
 										minDate={new Date()}
 										value={checkInDate}
 										onChange={(date) => setCheckInDate(date)}
 										slotProps={{ textField: { size: "small" } }}
+										format='dd-MMM-yyyy'
 									/>
 								</LocalizationProvider>
-							</Stack>
-							<Stack rowGap={1}>
+							</StyledStack>
+							<StyledStack rowGap={1}>
 								<StyledFlexContainer style={{ color: "#fff" }} flexStart>
 									Number Of Nights
 								</StyledFlexContainer>
@@ -170,7 +173,12 @@ const Index = () => {
 										onChange={handleChangeNight}
 										displayEmpty
 										inputProps={{ "aria-label": "Without label" }}
-										sx={{ background: "#fff", borderRadius: "0.5rem" }}
+										sx={{
+											background: "#fff",
+											borderRadius: "0.5rem",
+											maxWidth: "100%",
+											width: "15rem",
+										}}
 										size='small'>
 										{NIGHT_OPTIONS.map((option) => (
 											<MenuItem key={option} value={option}>
@@ -179,8 +187,8 @@ const Index = () => {
 										))}
 									</Select>
 								</FormControl>
-							</Stack>
-							<Stack rowGap={1}>
+							</StyledStack>
+							<StyledStack rowGap={1}>
 								<StyledFlexContainer style={{ color: "#fff" }} flexStart>
 									Travellers
 								</StyledFlexContainer>
@@ -188,14 +196,15 @@ const Index = () => {
 									travellerDetails={travellerDetails}
 									setTravellerDetails={setTravellerDetails}
 								/>
-							</Stack>
+							</StyledStack>
 						</StyledFlexContainer>
-						<StyledFlexContainer flexStart>
+						<StyledFlexContainer flexEnd>
 							<Button
 								variant='contained'
 								color='warning'
 								onClick={handleSearchPackages}
-								style={{ background: "#f90" }}>
+								style={{ background: "#f90" }}
+								fullWidth>
 								Search Packages
 							</Button>
 						</StyledFlexContainer>

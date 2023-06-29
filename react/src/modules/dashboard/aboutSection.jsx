@@ -27,13 +27,12 @@ const AboutSection = () => {
 				<StyledFlexContainer>
 					Special offer if you sign up before xyz
 				</StyledFlexContainer>
-				<StyledFlexContainer gap='2em'>
+				<StyledFlexContainer gap='2em' style={{ flexWrap: "wrap" }}>
 					<Stack
 						style={{
 							border: "1px solid lightgrey",
 							padding: "0.5rem",
 							borderRadius: "5px",
-							minWidth: "30rem",
 						}}>
 						<StyledFlexContainer
 							style={{ padding: "1rem", background: "#ff98003b" }}>
@@ -77,7 +76,6 @@ const AboutSection = () => {
 							border: "1px solid lightgrey",
 							padding: "0.5rem",
 							borderRadius: "5px",
-							minWidth: "30rem",
 						}}>
 						<StyledFlexContainer
 							style={{ padding: "1rem", background: "#4caf5087" }}>
