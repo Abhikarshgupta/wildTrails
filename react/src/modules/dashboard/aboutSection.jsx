@@ -1,5 +1,6 @@
 import { Button, Stack } from "@mui/material";
 import { memo } from "react";
+import { THEME } from "../../styles/theme";
 import { StarIconSVG } from "../../assets";
 import { StyledFlexContainer } from "../../styles/globalStyles";
 
@@ -27,7 +28,7 @@ const AboutSection = () => {
 				<StyledFlexContainer>
 					Special offer if you sign up before xyz
 				</StyledFlexContainer>
-				<StyledFlexContainer gap='2em' style={{ flexWrap: "wrap" }}>
+				<StyledFlexContainer gap='2em' flexWrap>
 					<Stack
 						style={{
 							border: "1px solid lightgrey",
@@ -130,29 +131,31 @@ const AboutSection = () => {
 								Africa:{" "}
 								<a
 									href='mailto:sales01@hodariafrica.com'
-									style={{ color: "#fd7145" }}>
+									style={{ color: THEME.warningHeavy }}>
 									sales01@hodariafrica.com
 								</a>{" "}
 								or Whatsapp Mobile:{" "}
 								<a
 									href='https://wa.me/254708115622'
-									style={{ color: "#fd7145" }}>
+									style={{ color: THEME.warningHeavy }}>
 									+254 708115622
 								</a>{" "}
 								/{" "}
-								<a href='tel://+254746872870' style={{ color: "#fd7145" }}>
+								<a
+									href='tel://+254746872870'
+									style={{ color: THEME.warningHeavy }}>
 									+254 746872870
 								</a>{" "}
 								& India :{" "}
 								<a
 									href='mailto:geeta@safariin3clicks.com'
-									style={{ color: "#fd7145" }}>
+									style={{ color: THEME.warningHeavy }}>
 									geeta@safariin3clicks.com
 								</a>
 								, Whatsapp Number:
 								<a
 									href='https://wa.me/919953845495'
-									style={{ color: "#fd7145" }}>
+									style={{ color: THEME.warningHeavy }}>
 									+919953845495{" "}
 								</a>
 								) for the rate-card access to the key in your prices
@@ -199,17 +202,21 @@ const AboutSection = () => {
 						<b style={{ marginRight: "0.2rem" }}>East Africa : </b>
 						<a
 							href='mailto:sales01@hodariafrica.com'
-							style={{ color: "#fd7145" }}>
+							style={{ color: THEME.warningHeavy }}>
 							sales01@hodariafrica.com
 						</a>
 						<span style={{ marginLeft: "0.2rem", marginRight: "0.2rem" }}>
 							or Whatsapp Mobile:
 						</span>
-						<a href='https://wa.me/254708115622' style={{ color: "#fd7145" }}>
+						<a
+							href='https://wa.me/254708115622'
+							style={{ color: THEME.warningHeavy }}>
 							+254 708115622
 						</a>{" "}
 						/{" "}
-						<a href='https://wa.me/254746872870' style={{ color: "#fd7145" }}>
+						<a
+							href='https://wa.me/254746872870'
+							style={{ color: THEME.warningHeavy }}>
 							+254 746872870
 						</a>
 					</StyledFlexContainer>
@@ -220,13 +227,15 @@ const AboutSection = () => {
 						<b style={{ marginRight: "0.2rem" }}>India: </b>
 						<a
 							href='mailto:saleskenya@safariin3clicks.com'
-							style={{ color: "#fd7145" }}>
+							style={{ color: THEME.warningHeavy }}>
 							geeta@safariin3clicks.com
 						</a>
 						<span style={{ marginLeft: "0.2rem", marginRight: "0.2rem" }}>
 							or Whatsapp Mobile:
 						</span>
-						<a href='https://wa.me/919953845495' style={{ color: "#fd7145" }}>
+						<a
+							href='https://wa.me/919953845495'
+							style={{ color: THEME.warningHeavy }}>
 							+919953845495
 						</a>
 					</StyledFlexContainer>

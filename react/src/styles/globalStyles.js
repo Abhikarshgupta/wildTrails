@@ -41,8 +41,8 @@ export const StyledFlexContainer = styled.div`
 		css`
 			gap: ${gap};
 		`}
-	${({ wrap }) =>
-		wrap &&
+	${({ flexWrap }) =>
+		flexWrap &&
 		css`
 			flex-wrap: wrap;
 		`}

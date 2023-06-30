@@ -17,6 +17,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import PackageDetails from "./modals/packageDetails";
 import CustomTravellerPopOver from "../../components/custom-traveller-popover";
 import AboutSection from "./aboutSection";
+import { useNavigate } from "react-router-dom";
 
 const NIGHT_OPTIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const roomData = {
@@ -26,6 +27,7 @@ const roomData = {
 };
 
 const Index = () => {
+	const navigate = useNavigate();
 	const { regions, error: errorRegions } = useGetRegions();
 
 	const [currentRegion, setCurrentRegion] = useState("");
@@ -44,7 +46,8 @@ const Index = () => {
 	const handleChangeNight = (event) => setNights(event.target.value);
 	const toggleDialogOpen = () => setShowDetailsPopup((prev) => !prev);
 	const handleSearchPackages = () => {
-		toggleDialogOpen();
+		// toggleDialogOpen();
+		navigate("/listing");
 	};
 
 	// eslint-disable-next-line no-unused-vars
@@ -68,7 +71,7 @@ const Index = () => {
 						<StyledFlexContainer style={{ color: "#fff" }}>
 							Book your Jungle Experiences along with Safaris & Local Activities
 						</StyledFlexContainer>
-						<StyledFlexContainer flexSpaceBetween wrap>
+						<StyledFlexContainer flexSpaceBetween flexWrap>
 							<StyledStack rowGap={1}>
 								{errorRegions.length ? (
 									<StyledFlexContainer style={{ color: "red" }}>
@@ -141,7 +144,7 @@ const Index = () => {
 						</StyledFlexContainer>
 						<StyledFlexContainer
 							flexStart
-							wrap
+							flexWrap
 							style={{ rowGap: "1rem", columnGap: "3.5rem" }}>
 							<StyledStack rowGap={1}>
 								<StyledFlexContainer style={{ color: "#fff" }} flexStart>

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Stack, TextField } from "@mui/material";
+import { FONTSTYLES } from "../../styles/theme";
 import { StyledFlexContainer } from "../../styles/globalStyles";
 
 const CustomTextInput = ({
@@ -17,7 +18,7 @@ const CustomTextInput = ({
 	console.log({ inputType });
 	return (
 		<Stack rowGap={1}>
-			<StyledFlexContainer flexStart>
+			<StyledFlexContainer flexStart style={FONTSTYLES.label}>
 				{label} {required && <span style={{ color: "#DC2626" }}>*</span>}
 			</StyledFlexContainer>
 			{multiline && (
