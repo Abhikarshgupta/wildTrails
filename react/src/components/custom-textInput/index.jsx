@@ -18,9 +18,11 @@ const CustomTextInput = ({
 	console.log({ inputType });
 	return (
 		<Stack rowGap={1}>
-			<StyledFlexContainer flexStart style={FONTSTYLES.label}>
-				{label} {required && <span style={{ color: "#DC2626" }}>*</span>}
-			</StyledFlexContainer>
+			{label && (
+				<StyledFlexContainer flexStart style={FONTSTYLES.label}>
+					{label} {required && <span style={{ color: "#DC2626" }}>*</span>}
+				</StyledFlexContainer>
+			)}
 			{multiline && (
 				<TextField
 					aria-label={`multilineTextInput-${label}`}
