@@ -5,6 +5,9 @@ const Login = lazy(() => import("../modules/login/index"));
 const Dashboard = lazy(() => import("../modules/dashboard/index"));
 const Leads = lazy(() => import("../modules/leads/index"));
 const Listing = lazy(() => import("../modules/listing/index"));
+const ItineraryDetails = lazy(() =>
+	import("../modules/itinerary-details/index")
+);
 const Index = () => {
 	return (
 		<Suspense fallback={<>Loading...</>}>
@@ -21,6 +24,10 @@ const Index = () => {
 				<Route
 					path='/listing'
 					element={<ProtectedRoutes element={<Listing />} />}
+				/>
+				<Route
+					path='/itinerary/:id'
+					element={<ProtectedRoutes element={<ItineraryDetails />} />}
 				/>
 				<Route path='*' element={<Login />} />
 			</Routes>
