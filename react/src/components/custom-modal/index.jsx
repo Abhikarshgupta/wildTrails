@@ -21,12 +21,12 @@ const CustomModal = ({
 	saveText = "Save",
 }) => {
 	return (
-		<Dialog onClose={onClose} open={open}>
+		<Dialog onClose={onClose} open={open} fullWidth={true} maxWidth='xs'>
 			<DialogTitle style={{ borderBottom: `1px solid ${THEME.border}` }}>
 				<StyledFlexContainer flexSpaceBetween>
 					{title}
-					<IconButton onClick={onClose}>
-						<CloseOutlinedIcon />
+					<IconButton>
+						<CloseOutlinedIcon onClick={onClose} />
 					</IconButton>
 				</StyledFlexContainer>
 			</DialogTitle>
@@ -34,7 +34,9 @@ const CustomModal = ({
 			<DialogActions style={{ borderTop: `1px solid ${THEME.border}` }}>
 				<StyledFlexContainer gap='1rem' style={{ padding: "0 1rem 0.5rem" }}>
 					<CustomButton color='red' text={cancelText} onClick={onClose} />
-					<CustomButton color='green' text={saveText} onClick={handleSave} />
+					{handleSave && (
+						<CustomButton color='green' text={saveText} onClick={handleSave} />
+					)}
 				</StyledFlexContainer>
 			</DialogActions>
 		</Dialog>

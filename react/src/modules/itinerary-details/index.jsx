@@ -1,5 +1,7 @@
 import { Box, Grid, Paper, Stack, Tab, Tabs } from "@mui/material";
 import { useState } from "react";
+import ItineraryConfigBox from "../../components/itinerary-config-box";
+import CostBreakup from "./modals/costBreakup";
 
 const tabValueToContainerMap = {
 	0: "ItineraryOverview",
@@ -9,29 +11,34 @@ const tabValueToContainerMap = {
 	4: "HowToGetThere",
 	5: "COVID19",
 };
+
+const topHeaderHeight = 60;
 const ItineraryDetails = () => {
 	const [tabValue, setTabValue] = useState(0);
+	const [showCostBreakupModal, setShowCostBreakupModal] = useState(false);
 
 	const handleToggleTab = (event, newValue) => {
 		setTabValue(newValue);
-		const requiredElement = document.getElementById(
-			tabValueToContainerMap[newValue]
-		);
-		console.log({ requiredElement });
-		requiredElement?.scrollIntoView({
+		const element = document.getElementById(tabValueToContainerMap[newValue]);
+		const headerEl = document.getElementById("HeaderBox");
+		const offsetPosition =
+			element.offsetTop - headerEl?.offsetHeight - topHeaderHeight;
+		window.scrollTo({
+			top: offsetPosition,
 			behavior: "smooth",
-			block: "start",
-			inline: "start",
 		});
 	};
-
+	const handleToggleCostBreakupModal = () => {
+		setShowCostBreakupModal((prev) => !prev);
+	};
 	return (
-		<Stack style={{ marginTop: "4rem" }} rowGap={4}>
+		<Stack style={{}} rowGap={4}>
 			<Grid container>
 				<Grid item xs={0} sm={1}></Grid>
 				<Grid item xs={12} sm={10}>
 					<Stack rowGap={2}>
 						<Box
+							id='HeaderBox'
 							style={{ position: "sticky", background: "#fff", top: "3rem" }}>
 							<Box>
 								<Tabs
@@ -49,8 +56,12 @@ const ItineraryDetails = () => {
 									<Tab label='COVID-19' value={5} />
 								</Tabs>
 							</Box>
-							<Paper>this is itinerary details</Paper>
-							<Paper>searchBox</Paper>
+							<Paper onClick={handleToggleCostBreakupModal}>
+								ajj;sdjfasdjfasjfdjl
+							</Paper>
+							<Paper>
+								<ItineraryConfigBox />
+							</Paper>
 						</Box>
 						<Stack rowGap={2} marginBottom={2}>
 							<Paper style={{ height: "1000px" }}> current package data</Paper>
@@ -58,7 +69,7 @@ const ItineraryDetails = () => {
 								Overview box with map, description, Route vertical stepper
 							</Paper>
 							<Box id='ItineraryResorts'>
-								<Stack style={{ height: "1000px", marginTop: "4rem" }}>
+								<Stack style={{ height: "1000px" }}>
 									Resorts Accordions with margins
 								</Stack>
 							</Box>
@@ -70,12 +81,12 @@ const ItineraryDetails = () => {
 								wysiwyg editor
 							</Paper>
 							<Box id='HowToGetThere'>
-								<Stack style={{ height: "1000px", marginTop: "4rem" }}>
+								<Stack style={{ height: "1000px" }}>
 									How to get there accordion
 								</Stack>
 							</Box>
 							<Box id='COVID19'>
-								<Stack style={{ height: "1000px", marginTop: "4rem" }}>
+								<Stack style={{ height: "1000px" }}>
 									Covid 19 restrictions accordion
 								</Stack>
 							</Box>
@@ -85,6 +96,13 @@ const ItineraryDetails = () => {
 				</Grid>
 				<Grid item xs={0} sm={1}></Grid>
 			</Grid>
+			{showCostBreakupModal && (
+				<CostBreakup
+					open={showCostBreakupModal}
+					onClose={handleToggleCostBreakupModal}
+					costs={tabValueToContainerMap}
+				/>
+			)}
 		</Stack>
 	);
 };

@@ -10,6 +10,8 @@ import { useState } from "react";
 import CustomItinerary from "./modals/customItinerary";
 import ChooseDMC from "./modals/chooseDMC";
 import ItineraryCard from "./itineraryCard";
+import FailedItineraries from "./modals/failedItineraries";
+import ItineraryConfigBox from "../../components/itinerary-config-box";
 
 const x = new Array(100).fill("it");
 const ListingPage = () => {
@@ -23,8 +25,8 @@ const ListingPage = () => {
 	};
 	return (
 		<Stack rowGap={4}>
-			<StyledListingHeader style={FONTSTYLES.heading}>
-				Leads Dashboard
+			<StyledListingHeader style={{ ...FONTSTYLES.heading, marginTop: "4rem" }}>
+				<ItineraryConfigBox />
 			</StyledListingHeader>
 			<Stack style={{ padding: "0 1rem" }} gap={2}>
 				<Paper
@@ -93,6 +95,12 @@ const ListingPage = () => {
 			{showModal.chooseDMCModal && (
 				<ChooseDMC
 					open={showModal.chooseDMCModal}
+					onClose={handleToggleModal}
+				/>
+			)}
+			{showModal.failedItinerariesModal && (
+				<FailedItineraries
+					open={showModal.failedItinerariesModal}
 					onClose={handleToggleModal}
 				/>
 			)}

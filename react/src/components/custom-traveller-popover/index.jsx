@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { Popover, Stack } from "@mui/material";
 import { useState } from "react";
+import { FONTSTYLES } from "../../styles/theme";
 import { StyledFlexContainer } from "../../styles/globalStyles";
 import SingleRoomContainer from "./singleRoomContainer";
 
@@ -78,9 +79,11 @@ const CustomTravellerPopOver = ({ travellerDetails, setTravellerDetails }) => {
 				style={{
 					background: "#fff",
 					borderRadius: "5px",
-					width: "15rem",
-					minHeight: "2.4em",
+					height: "2.4rem",
 					maxWidth: "100%",
+					...FONTSTYLES.label,
+					padding: "0 0.5rem",
+					border: "1px solid lightgrey",
 				}}>
 				{generateTextForParsedTravellerDetails(parsedTravellerDetails)}
 			</StyledFlexContainer>

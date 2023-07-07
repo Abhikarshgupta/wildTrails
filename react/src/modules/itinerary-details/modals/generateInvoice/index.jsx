@@ -13,25 +13,21 @@ import { StyledFlexContainer } from "../../styles/globalStyles";
 import CustomTextInput from "../custom-textInput";
 
 const initInvoiceDetails = {
-	companyName: "",
-	businessEmail: "",
+	customerName: "",
+	customerEmail: "",
 	mobileNumber: "",
-	whatsappNumber: "",
-	website: "",
-	taxPercentage: "",
-	officeAddress: "",
-	bankDetails: "",
+	customerAddress: "",
 };
 /* eslint-disable no-unused-vars */
-const InvoiceModal = (props) => {
+const GenerateInvoice = (props) => {
 	const {
-		companyName,
-		businessEmail,
+		customerName,
+		customerEmail,
 		mobileNumber,
 		whatsappNumber,
 		website,
 		taxPercentage,
-		officeAddress,
+		customerAddress,
 		bankDetails,
 	} = props;
 	const [invoiceDetails, setInvoiceDetails] = useState(initInvoiceDetails);
@@ -47,29 +43,18 @@ const InvoiceModal = (props) => {
 			fullWidth={true}
 			maxWidth='sm'>
 			<DialogTitle style={{ borderBottom: "1px solid grey" }}>
-				Update Invoice Details
+				Generate Invoice
 			</DialogTitle>
 			<DialogContent>
 				<Stack rowGap={2} style={{ marginTop: "1rem" }}>
 					<Grid container justifyContent='space-between'>
-						<Grid item xs={5.5}>
+						<Grid item xs={12}>
 							<CustomTextInput
-								label='Company Name'
+								label='customer Name'
 								required
-								value={invoiceDetails.companyName}
+								value={invoiceDetails.customerName}
 								onChange={(e) =>
-									handleUpdateInvoiceDetails("companyName", e.target.value)
-								}
-							/>
-						</Grid>
-						<Grid item xs={5.5}>
-							<CustomTextInput
-								label='Business Email'
-								required
-								value={invoiceDetails.businessEmail}
-								inputType='email'
-								onChange={(e) =>
-									handleUpdateInvoiceDetails("businessEmail", e.target.value)
+									handleUpdateInvoiceDetails("customerName", e.target.value)
 								}
 							/>
 						</Grid>
@@ -88,57 +73,23 @@ const InvoiceModal = (props) => {
 						</Grid>
 						<Grid item xs={5.5}>
 							<CustomTextInput
-								label='Whatsapp Number'
+								label='Customer Email'
 								required
-								value={invoiceDetails.whatsappNumber}
-								inputType='number'
+								value={invoiceDetails.customerEmail}
+								inputType='email'
 								onChange={(e) =>
-									handleUpdateInvoiceDetails("whatsappNumber", e.target.value)
-								}
-							/>
-						</Grid>
-					</Grid>
-					<Grid container justifyContent='space-between'>
-						<Grid item xs={5.5}>
-							<CustomTextInput
-								label='Website'
-								required
-								value={invoiceDetails.website}
-								onChange={(e) =>
-									handleUpdateInvoiceDetails("website", e.target.value)
-								}
-							/>
-						</Grid>
-						<Grid item xs={5.5}>
-							<CustomTextInput
-								label='Tax %'
-								required
-								value={invoiceDetails.taxPercentage}
-								inputType='number'
-								onChange={(e) =>
-									handleUpdateInvoiceDetails("taxPercentage", e.target.value)
+									handleUpdateInvoiceDetails("customerEmail", e.target.value)
 								}
 							/>
 						</Grid>
 					</Grid>
 					<CustomTextInput
-						label='Office Address'
+						label='customer Address'
 						placeholder='Full Address'
 						required
-						value={invoiceDetails.officeAddress}
+						value={invoiceDetails.customerAddress}
 						onChange={(e) =>
-							handleUpdateInvoiceDetails("officeAddress", e.target.value)
-						}
-						multiline
-						rows={2}
-					/>
-					<CustomTextInput
-						label='Bank Details'
-						placeholder='Bank Information'
-						required
-						value={invoiceDetails.bankDetails}
-						onChange={(e) =>
-							handleUpdateInvoiceDetails("bankDetails", e.target.value)
+							handleUpdateInvoiceDetails("customerAddress", e.target.value)
 						}
 						multiline
 						rows={2}
@@ -155,7 +106,7 @@ const InvoiceModal = (props) => {
 						Cancel
 					</Button>
 					<Button variant='contained' color='success' size='small'>
-						Save
+						Generate Invoice
 					</Button>
 				</StyledFlexContainer>
 			</DialogActions>
@@ -163,4 +114,4 @@ const InvoiceModal = (props) => {
 	);
 };
 
-export default InvoiceModal;
+export default GenerateInvoice;
