@@ -13,6 +13,12 @@ import ItineraryCard from "./itineraryCard";
 import FailedItineraries from "./modals/failedItineraries";
 import ItineraryConfigBox from "../../components/itinerary-config-box";
 
+// useEffect. 1st get all search terms, parse and make api call to get data according to that.
+// store.
+// search box to also parse from url.
+// need filters. how do they work?
+//
+
 const x = new Array(100).fill("it");
 const ListingPage = () => {
 	const [showModal, setShowModal] = useState({

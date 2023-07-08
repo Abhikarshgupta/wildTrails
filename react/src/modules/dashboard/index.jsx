@@ -18,6 +18,7 @@ import PackageDetails from "./modals/packageDetails";
 import CustomTravellerPopOver from "../../components/custom-traveller-popover";
 import AboutSection from "./aboutSection";
 import { useNavigate } from "react-router-dom";
+import { generateSearchParams, parseTravellerDetails } from "../../utils/index";
 
 const NIGHT_OPTIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const roomData = {
@@ -46,8 +47,15 @@ const Index = () => {
 	const handleChangeNight = (event) => setNights(event.target.value);
 	const toggleDialogOpen = () => setShowDetailsPopup((prev) => !prev);
 	const handleSearchPackages = () => {
-		// toggleDialogOpen();
-		navigate("/listing");
+		const parsedTravellerDetails = parseTravellerDetails(travellerDetails);
+		const searchParams = generateSearchParams([
+			{ currentCity },
+			{ currentRegion },
+			{ checkInDate: checkInDate.getTime() },
+			{ nights },
+			{ parsedTravellerDetails },
+		]);
+		navigate(`/listing${searchParams}`);
 	};
 
 	// eslint-disable-next-line no-unused-vars
@@ -198,6 +206,7 @@ const Index = () => {
 								<CustomTravellerPopOver
 									travellerDetails={travellerDetails}
 									setTravellerDetails={setTravellerDetails}
+									width='15rem'
 								/>
 							</StyledStack>
 						</StyledFlexContainer>

@@ -28,7 +28,11 @@ const generateTextForParsedTravellerDetails = (travellerData) => {
 			: "";
 	});
 };
-const CustomTravellerPopOver = ({ travellerDetails, setTravellerDetails }) => {
+const CustomTravellerPopOver = ({
+	travellerDetails,
+	setTravellerDetails,
+	width = "100%",
+}) => {
 	const [anchorEl, setAnchorEl] = useState(null);
 
 	const handleClick = (event) => {
@@ -70,7 +74,7 @@ const CustomTravellerPopOver = ({ travellerDetails, setTravellerDetails }) => {
 		},
 		{ adults: 0, kids: 0, infants: 0, rooms: 0 }
 	);
-
+	console.log(width);
 	return (
 		<>
 			<StyledFlexContainer
@@ -84,6 +88,7 @@ const CustomTravellerPopOver = ({ travellerDetails, setTravellerDetails }) => {
 					...FONTSTYLES.label,
 					padding: "0 0.5rem",
 					border: "1px solid lightgrey",
+					width: width,
 				}}>
 				{generateTextForParsedTravellerDetails(parsedTravellerDetails)}
 			</StyledFlexContainer>

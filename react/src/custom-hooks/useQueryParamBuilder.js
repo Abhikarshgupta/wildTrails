@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const useQueryParamBuilder = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const search = useLocation().search;
+	const { search } = useLocation();
 
 	// either we will add or remove.
 	// TODO - update to an object params and add annotation.

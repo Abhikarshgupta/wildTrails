@@ -15,6 +15,7 @@ import useGetCities from "../../modules/dashboard/hooks/useGetCities";
 import useGetRegions from "../../modules/dashboard/hooks/useGetRegions";
 import { StyledFlexContainer, StyledStack } from "../../styles/globalStyles";
 import CustomTravellerPopOver from "../custom-traveller-popover";
+import useQueryParamBuilder from "../../custom-hooks/useQueryParamBuilder";
 const NIGHT_OPTIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const roomData = {
 	adults: 2,
@@ -24,6 +25,9 @@ const roomData = {
 
 const ItineraryConfigBox = () => {
 	const navigate = useNavigate();
+	const { getQueryParams } = useQueryParamBuilder();
+	const x = getQueryParams();
+	console.log({ x });
 	const { regions, error: errorRegions } = useGetRegions();
 
 	const [currentRegion, setCurrentRegion] = useState("");
